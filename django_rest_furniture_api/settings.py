@@ -21,13 +21,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-@k-$ovv=6y-*=cswe&palvgfrbit$aqp!)_@)=9j85g_3
+SECRET_KEY = 'django-insecure-@k-$ovv=6y-*=cswe&palvgfrbit$aqp!)_@)=9j85g_3'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'locahost',
+    'localhost',
     'furnituredjango.herokuapp.com',
 ]
 
@@ -57,6 +57,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 CORS_ALLOW_ALL_ORIGINS = True
@@ -96,7 +97,7 @@ DATABASES = {
 }
 
 db_from_env = dj_database_url.config(conn_max_age = 600)
-DATABASE['default'].update(db_from_env)
+DATABASES['default'].update(db_from_env)
 
 
 # Password validation
