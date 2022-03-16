@@ -13,11 +13,11 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 from pathlib import Path
 # import dj_database_url
 import os
-# import environ
-#
-# # Initialise environment variables
-# env = environ.Env()
-# environ.Env.read_env()
+import environ
+
+# Initialise environment variables
+env = environ.Env()
+environ.Env.read_env()
 
 
 #THERE ARE A FEW LINES COMMENTED OUT ABOVE...THE REASON IS DUE TO ERRORS GIVEN WHEN TRYING TO DEPLOY TO heroku
