@@ -13,11 +13,11 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 from pathlib import Path
 # import dj_database_url
 import os
-import environ
-
-# Initialise environment variables
-env = environ.Env()
-environ.Env.read_env()
+# import environ
+#
+# # Initialise environment variables
+# env = environ.Env()
+# environ.Env.read_env()
 
 
 #THERE ARE A FEW LINES COMMENTED OUT ABOVE...THE REASON IS DUE TO ERRORS GIVEN WHEN TRYING TO DEPLOY TO heroku
@@ -31,7 +31,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env('SECRET_KEY')
+SECRET_KEY = 'django-insecure-@k-$ovv=6y-*=cswe&palvgfrbit$aqp!)_@)=9j85g_3cs4xy'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
