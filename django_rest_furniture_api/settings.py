@@ -134,8 +134,15 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = 'staticfiles/'
+MEDIA_URL = '/furnitures-images/'
+
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+
+
+#Every time the user upload any image, django will know where to save all the images
+MEDIA_ROOT = 'staticfiles/furnitures-images'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
