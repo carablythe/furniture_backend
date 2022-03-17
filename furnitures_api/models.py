@@ -22,9 +22,9 @@ class Furniture(models.Model):
 class Order(models.Model):
     user = models.ForeignKey(User, on_delete = models.SET_NULL, null = True)
     paymentMethod = models.CharField(max_length = 200, null = True, blank = True)
-    taxPrice = models.DecimalField(max_digits = 4, decimal_places = 2, null = True, blank = True)
-    shippingPrice = models.DecimalField(max_digits = 4, decimal_places = 2, null = True, blank = True)
-    totalPrice  = models.DecimalField(max_digits = 4, decimal_places = 2, null = True, blank = True)
+    taxPrice = models.DecimalField(max_digits = 7, decimal_places = 2, null = True, blank = True)
+    shippingPrice = models.DecimalField(max_digits = 7, decimal_places = 2, null = True, blank = True)
+    totalPrice  = models.DecimalField(max_digits = 7, decimal_places = 2, null = True, blank = True)
     isPaid = models.BooleanField(default = False)
     paidAt = models.DateTimeField (auto_now_add = False, null = True, blank = True)
     isDelivered = models.BooleanField(default = False)
@@ -32,14 +32,14 @@ class Order(models.Model):
 
 
     def __str__(self):
-        return str(self.createdAt)
+        return str(self.user)
 
 class OrderItem (models.Model):
     product = models.ForeignKey(Furniture, on_delete = models.SET_NULL, null = True)
     order = models.ForeignKey(Order, on_delete = models.SET_NULL, null = True)
     name = models.CharField(max_length = 200, null = True, blank = True)
     qty = models.IntegerField(null = True, blank = True, default = 0)
-    price  = models.DecimalField(max_digits = 4, decimal_places = 2, null = True, blank = True)
+    price  = models.DecimalField(max_digits = 7, decimal_places = 2, null = True, blank = True)
     img = models.TextField (null = True, blank = True)
 
     def __str__(self):
@@ -52,7 +52,7 @@ class ShippingAddress (models.Model):
     city = models.CharField(max_length = 200, null = True, blank = True)
     postalCode = models.CharField(max_length = 5, null = True, blank = True)
     state = models.CharField(max_length = 2, null = True, blank = True)
-    shippingPrice = models.DecimalField(max_digits = 4, decimal_places = 2, null = True, blank = True)
+    shippingPrice = models.DecimalField(max_digits = 7, decimal_places = 2, null = True, blank = True)
 
     def __str__(self):
         return str(self.address)
