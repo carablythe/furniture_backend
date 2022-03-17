@@ -28,7 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     'localhost',
-    'furnituredjango.herokuapp.com',
+    'django-furniture-backup.herokuapp.com',
 ]
 
 
