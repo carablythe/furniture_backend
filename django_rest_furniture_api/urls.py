@@ -16,8 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import include
+from django.conf import settings #allow us to wok with the settings.py file
+from django.conf.urls.static import static #import the static function to display static file
 
 urlpatterns = [
     path('', include('furnitures_api.urls')),
     path('admin/', admin.site.urls),
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
