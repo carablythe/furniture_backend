@@ -56,3 +56,11 @@ class ShippingAddress (models.Model):
 
     def __str__(self):
         return str(self.address)
+
+class Review (models.Model):
+    product = models.ForeignKey(Furniture, on_delete = models.SET_NULL, null = True)
+    user = models.ForeignKey(User, on_delete = models.SET_NULL, null = True)
+    comment = models.TextField (null = True, blank = True)
+
+    def __str__(self):
+        return str(self.product)
