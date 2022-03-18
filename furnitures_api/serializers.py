@@ -7,3 +7,8 @@ class FurnitureSerializer(serializers.ModelSerializer): #tells django to convert
     class Meta:
         model = Furniture #tells django which model to use
         fields = ('id','name','img','imgURL','color','category','price','quantity','availability',) #tells django which fields to include
+
+class UserSerializer(serializers.ModelSerializer): #tells django to convert sql to JSON
+    class Meta:
+        model = User #tells django which model to use
+        fields = ('id','username','email',) #tells django to include all fields
