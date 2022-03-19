@@ -1,37 +1,9 @@
-Skip to content
-Search or jump to…
-Pulls
-Issues
-Marketplace
-Explore
-
-@carablythe
-carablythe
-/
-furniture_backend
-Public
-Code
-Issues
-Pull requests
-Actions
-Projects
-Wiki
-Security
-More
-furniture_backend/furnitures_api/views.py /
-
-Victoria Le Cart model added
-Latest commit a74e62e 5 hours ago
- History
- 1 contributor
-74 lines (54 sloc)  2.96 KB
-
 from django.shortcuts import render
 
 # Create your views here.
 from rest_framework import generics
-from .serializers import FurnitureSerializer, CartSerializer, UserSerializer, UserSerializerWithToken
-from .models import Furniture, Cart
+from .serializers import FurnitureSerializer, CartSerializer, UserSerializer, UserSerializerWithToken, ReviewSerializer
+from .models import Furniture, Cart, Review
 from django.contrib.auth.models  import User
 
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
@@ -103,4 +75,3 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
 
 class MyTokenObtainPairView(TokenObtainPairView):
     serializer_class = MyTokenObtainPairSerializer #the serializer class will actually return back the user data
-

@@ -1,7 +1,7 @@
 # The serializer will the take the data in database and convert it into JSON
 from rest_framework import serializers
 from django.contrib.auth.models import User
-from .models import Furniture, Cart
+from .models import Furniture, Cart, Review
 from rest_framework_simplejwt.tokens import RefreshToken
 
 
@@ -13,7 +13,7 @@ class FurnitureSerializer(serializers.ModelSerializer): #tells django to convert
 class CartSerializer(serializers.ModelSerializer): #tells django to convert sql to JSON
     class Meta:
         model = Cart #tells django which model to use
-        fields = ('id','user','product','qty','price','img',) 
+        fields = ('id','user','product','qty','price','img',)
 
 
 class UserSerializer(serializers.ModelSerializer): #tells django to convert sql to JSON
@@ -31,7 +31,7 @@ class UserSerializerWithToken(UserSerializer):
         token = RefreshToken.for_user(obj)
         return str(token)
 
-      
+
 class ReviewSerializer(serializers.ModelSerializer): #tells django to convert sql to JSON
     class Meta:
         model = Review #tells django which model to use
