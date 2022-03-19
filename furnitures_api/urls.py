@@ -10,8 +10,8 @@ urlpatterns = [
     path('api/users/profile', views.getUserProfile, name = 'user_profile'),
     path('api/furnitures', views.FurnitureList.as_view(), name = 'furniture_list'),
     path('api/furnitures/<int:pk>', views.FurnitureDetail.as_view(), name = 'furniture_detail'),
-    path('api/cart', views.FurnitureList.as_view(), name = 'cart_list'),
-    path('api/cart/<int:pk>', views.FurnitureDetail.as_view(), name = 'cart_detail'),
+    path('api/cart', views.CartList.as_view(), name = 'cart_list'),
+    path('api/cart/<int:pk>', views.CartDetail.as_view(), name = 'cart_detail'),
     # path('api/reviews', views.ReviewList.as_view(), name = 'review_list'),
     # path('api/reviews/<int:pk>', views.ReviewDetail.as_view(), name = 'review_detail'),
 ]

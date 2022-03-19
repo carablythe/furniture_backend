@@ -21,7 +21,7 @@ class Furniture(models.Model):
     def __str__(self): #this will display the items in the database by the name instead of just the furniture 1, furniture 2, etc...
         return self.name
 
-#
+
 # class Review (models.Model):
 #     product = models.ForeignKey(Furniture, on_delete = models.SET_NULL, null = True)
 #     user = models.ForeignKey(User, on_delete = models.SET_NULL, null = True)
