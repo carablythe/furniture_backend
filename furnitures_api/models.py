@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models  import User #this model is already existed, how we create the superuser
+from django.core.validators import MaxValueValidator, MinValueValidator #this allows for a 5-star rating system in the Customer Review Section
 
 # Create your models here.
 class Furniture(models.Model):
@@ -14,9 +15,20 @@ class Furniture(models.Model):
     quantity = models.IntegerField(default = 1)
     availability = models.BooleanField()
 
-
     def __str__(self): #this will display the items in the database by the name instead of just the furniture 1, furniture 2, etc...
         return self.name
+
+
+class Review (models.Model):
+    product = models.ForeignKey(Furniture, on_delete = models.SET_NULL, null = True)
+    user = models.ForeignKey(User, on_delete = models.SET_NULL, null = True)
+    rating = models.IntegerField(default = 5,
+        validators=[MaxValueValidator(5), MinValueValidator(0)]
+        )
+    comment = models.TextField (null = True, blank = True, max_length = 300)
+
+    def __str__(self):
+        return str(self.product)
 
 
 class Order(models.Model):
@@ -30,9 +42,9 @@ class Order(models.Model):
     isDelivered = models.BooleanField(default = False)
     deliveredAt = models.DateTimeField (auto_now_add = False, null = True, blank = True)
 
-
     def __str__(self):
         return str(self.user)
+
 
 class OrderItem (models.Model):
     product = models.ForeignKey(Furniture, on_delete = models.SET_NULL, null = True)
@@ -44,6 +56,7 @@ class OrderItem (models.Model):
 
     def __str__(self):
         return str(self.name)
+
 
 class ShippingAddress (models.Model):
     order = models.OneToOneField(Order, on_delete = models.CASCADE, null = True, blank = True)

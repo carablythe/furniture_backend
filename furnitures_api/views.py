@@ -1,3 +1,31 @@
+Skip to content
+Search or jump to…
+Pulls
+Issues
+Marketplace
+Explore
+
+@carablythe
+carablythe
+/
+furniture_backend
+Public
+Code
+Issues
+Pull requests
+Actions
+Projects
+Wiki
+Security
+More
+furniture_backend/furnitures_api/views.py /
+
+Victoria Le Cart model added
+Latest commit a74e62e 5 hours ago
+ History
+ 1 contributor
+74 lines (54 sloc)  2.96 KB
+
 from django.shortcuts import render
 
 # Create your views here.
@@ -25,6 +53,9 @@ class FurnitureDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Furniture.objects.all().order_by('id')
     serializer_class = FurnitureSerializer
 
+class ReviewDetail(generics.RetrieveUpdateDestroyAPIView):
+        queryset = Review.objects.all().order_by('id')
+        serializer_class = ReviewSerializer
 
 ########Cart Serializer######
 class CartList(generics.ListCreateAPIView):
@@ -72,3 +103,4 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
 
 class MyTokenObtainPairView(TokenObtainPairView):
     serializer_class = MyTokenObtainPairSerializer #the serializer class will actually return back the user data
+
