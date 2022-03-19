@@ -4,6 +4,7 @@ from django.shortcuts import render
 from rest_framework import generics
 from .serializers import FurnitureSerializer, CartSerializer, UserSerializer, UserSerializerWithToken, ReviewSerializer
 from .models import Furniture, Cart, Review
+
 from django.contrib.auth.models  import User
 
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
@@ -16,6 +17,8 @@ from rest_framework.response import Response
 
 from django.contrib.auth.hashers import make_password
 #This is used to hash the pw before we can store it in our database
+
+from rest_framework import status
 
 class FurnitureList(generics.ListCreateAPIView):
     queryset = Furniture.objects.all().order_by('id')
@@ -33,6 +36,7 @@ class ReviewDetail(generics.RetrieveUpdateDestroyAPIView):
         queryset = Review.objects.all().order_by('id')
         serializer_class = ReviewSerializer
 
+
 ########Cart Serializer######
 class CartList(generics.ListCreateAPIView):
     queryset = Cart.objects.all().order_by('id')
@@ -47,14 +51,21 @@ class CartDetail(generics.RetrieveUpdateDestroyAPIView):
 @api_view(['POST'])
 def registerUser (request):
     data = request.data
-    user = User.objects.create (
-        first_name = data['name'],
-        username = data['email'],
-        email = data['email'],
-        password = make_password(data['password'])
-    )
-    serializer = UserSerializerWithToken(user, many = False)
-    return Response(serializer.data)
+
+    try:
+        user = User.objects.create (
+            first_name = data['name'],
+            username = data['email'],
+            email = data['email'],
+            password = make_password(data['password'])
+        )
+        serializer = UserSerializerWithToken(user, many = False)
+        return Response(serializer.data)
+
+    except:
+        message = {'detail':'User with email already exist'}
+        return Response(message, status = status.HTTP_400_BAD_REQUEST) 
+
 
 
 @api_view(['GET'])
