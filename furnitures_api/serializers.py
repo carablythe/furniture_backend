@@ -9,7 +9,7 @@ from rest_framework_simplejwt.tokens import RefreshToken
 class FurnitureSerializer(serializers.ModelSerializer): #tells django to convert sql to JSON
     class Meta:
         model = Furniture #tells django which model to use
-        fields = ('id','name','img','imgURL','color','category','price','quantity','availability','rating') #tells django which fields to include
+        fields = ('id','name','img','imgURL','color','category','price','quantity','availability','rating',) #tells django which fields to include
 
 
 class CartSerializer(serializers.ModelSerializer): #tells django to convert sql to JSON
