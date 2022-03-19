@@ -19,7 +19,7 @@ class Furniture(models.Model):
         return self.name
 
 
-class Review (models.Model):
+class Review(models.Model):
     product = models.ForeignKey(Furniture, on_delete = models.SET_NULL, null = True)
     user = models.ForeignKey(User, on_delete = models.SET_NULL, null = True)
     rating = models.IntegerField(default = 5,
