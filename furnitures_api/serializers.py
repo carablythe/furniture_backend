@@ -12,11 +12,6 @@ class FurnitureSerializer(serializers.ModelSerializer): #tells django to convert
         fields = ('id','name','img','imgURL','color','category','price','quantity','availability','rating') #tells django which fields to include
 
 
-<<<<<<< HEAD
-=======
-
-        
->>>>>>> e2cfe9641593df4417e38a6057922114cb6c0c39
 class CartSerializer(serializers.ModelSerializer): #tells django to convert sql to JSON
     class Meta:
         model = Cart #tells django which model to use
