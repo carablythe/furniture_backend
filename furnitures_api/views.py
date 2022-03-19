@@ -2,8 +2,10 @@ from django.shortcuts import render
 
 # Create your views here.
 from rest_framework import generics
-from .serializers import FurnitureSerializer, CartSerializer, UserSerializer, UserSerializerWithToken, ReviewSerializer
-from .models import Furniture, Cart, Review
+from .serializers import FurnitureSerializer, CartSerializer, UserSerializer, UserSerializerWithToken
+# , ReviewSerializer
+from .models import Furniture, Cart
+# , Review
 
 from django.contrib.auth.models  import User
 
@@ -51,13 +53,13 @@ class FurnitureDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Furniture.objects.all().order_by('id')
     serializer_class = FurnitureSerializer
 
-class ReviewList(generics.ListCreateAPIView):
-        queryset = Review.objects.all().order_by('id')
-        serializer_class = ReviewSerializer
-
-class ReviewDetail(generics.RetrieveUpdateDestroyAPIView):
-        queryset = Review.objects.all().order_by('id')
-        serializer_class = ReviewSerializer
+# class ReviewList(generics.ListCreateAPIView):
+#         queryset = Review.objects.all().order_by('id')
+#         serializer_class = ReviewSerializer
+#
+# class ReviewDetail(generics.RetrieveUpdateDestroyAPIView):
+#         queryset = Review.objects.all().order_by('id')
+#         serializer_class = ReviewSerializer
 
 
 ########Cart Serializer######
@@ -87,7 +89,7 @@ def registerUser (request):
 
     except:
         message = {'detail':'User with email already exist'}
-        return Response(message, status = status.HTTP_400_BAD_REQUEST) 
+        return Response(message, status = status.HTTP_400_BAD_REQUEST)
 
 
 
