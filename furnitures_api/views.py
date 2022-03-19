@@ -25,7 +25,7 @@ class FurnitureDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Furniture.objects.all().order_by('id')
     serializer_class = FurnitureSerializer
 
-class ReviewList(generics.RetrieveUpdateDestroyAPIView):
+class ReviewList(generics.ListCreateAPIView):
         queryset = Review.objects.all().order_by('id')
         serializer_class = ReviewSerializer
 
