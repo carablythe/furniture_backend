@@ -2,8 +2,8 @@ from django.shortcuts import render
 
 # Create your views here.
 from rest_framework import generics
-from .serializers import FurnitureSerializer, UserSerializer, UserSerializerWithToken
-from .models import Furniture
+from .serializers import FurnitureSerializer, CartSerializer, UserSerializer, UserSerializerWithToken
+from .models import Furniture, Cart
 from django.contrib.auth.models  import User
 
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
@@ -24,6 +24,17 @@ class FurnitureList(generics.ListCreateAPIView):
 class FurnitureDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Furniture.objects.all().order_by('id')
     serializer_class = FurnitureSerializer
+
+
+########Cart Serializer######
+class CartList(generics.ListCreateAPIView):
+    queryset = Cart.objects.all().order_by('id')
+    serializer_class =  CartSerializer
+
+class CartDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Cart.objects.all().order_by('id')
+    serializer_class = CartSerializer
+
 
 #########This Section is to create/obtain User profile#############
 @api_view(['POST'])
