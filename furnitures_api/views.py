@@ -20,6 +20,29 @@ from django.contrib.auth.hashers import make_password
 
 from rest_framework import status
 
+
+from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+from rest_framework_simplejwt.views import TokenObtainPairView
+#serialize token, this is from simple jwt documentation
+
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+
+
+class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
+    def validate (self, attrs): #we overide the validate method and serialize the user data, so that when we work with the frontend we dont have to decode the return json information, instead we have the username and email easy to reach
+        data = super().validate(attrs)
+
+        data['username'] = self.user.username
+        data['email'] = self.user.email
+
+
+        return data
+
+class MyTokenObtainPairView(TokenObtainPairView):
+    serializer_class = MyTokenObtainPairSerializer #the serializer class will actually return back the user data
+
+
 class FurnitureList(generics.ListCreateAPIView):
     queryset = Furniture.objects.all().order_by('id')
     serializer_class = FurnitureSerializer
