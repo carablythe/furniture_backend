@@ -4,6 +4,7 @@ from django.shortcuts import render
 from rest_framework import generics
 from .serializers import FurnitureSerializer, CartSerializer, UserSerializer, UserSerializerWithToken, ReviewSerializer
 from .models import Furniture, Cart, Review
+
 from django.contrib.auth.models  import User
 
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
@@ -35,6 +36,7 @@ class ReviewDetail(generics.RetrieveUpdateDestroyAPIView):
         queryset = Review.objects.all().order_by('id')
         serializer_class = ReviewSerializer
 
+
 ########Cart Serializer######
 class CartList(generics.ListCreateAPIView):
     queryset = Cart.objects.all().order_by('id')
@@ -63,6 +65,8 @@ def registerUser (request):
     except:
         message = {'detail':'User with email already exist'}
         return Response(message, status = status.HTTP_400_BAD_REQUEST) 
+
+
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
