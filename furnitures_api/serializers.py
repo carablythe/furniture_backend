@@ -35,4 +35,4 @@ class UserSerializerWithToken(UserSerializer):
 class ReviewSerializer(serializers.ModelSerializer): #tells django to convert sql to JSON
     class Meta:
         model = Review #tells django which model to use
-        fields = ('id', 'rating','comment',) #tells django to include all fields
+        fields = ('id', 'product', 'user', 'rating','comment',) #tells django to include all fields
