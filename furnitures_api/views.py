@@ -53,16 +53,9 @@ class FurnitureDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Furniture.objects.all().order_by('id')
     serializer_class = FurnitureSerializer
 
-
-
-class ReviewList(generics.ListCreateAPIView):
-        queryset = Review.objects.all().order_by('id')
-        serializer_class = ReviewSerializer
-
 class ReviewDetail(generics.RetrieveUpdateDestroyAPIView):
         queryset = Review.objects.all().order_by('id')
         serializer_class = ReviewSerializer
-
 
 ########Cart Serializer######
 class CartList(generics.ListCreateAPIView):
@@ -110,16 +103,4 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
 
 class MyTokenObtainPairView(TokenObtainPairView):
     serializer_class = MyTokenObtainPairSerializer #the serializer class will actually return back the user data
-© 2022 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Docs
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
-Loading complete
+

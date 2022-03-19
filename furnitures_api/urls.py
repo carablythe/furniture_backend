@@ -4,8 +4,7 @@ from . import views
 
 
 urlpatterns = [
-
-   path('api/users/login/', views.MyTokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/users/login/', views.MyTokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/users/register', views.registerUser, name = 'register'), ###this route will use in the post request of the frontend to register new User
     path('api/users/profile', views.getUserProfile, name = 'user_profile'),
     path('api/furnitures', views.FurnitureList.as_view(), name = 'furniture_list'),
