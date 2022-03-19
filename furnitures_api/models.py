@@ -14,9 +14,9 @@ class Furniture(models.Model):
     price = models.IntegerField()
     quantity = models.IntegerField(default = 1)
     availability = models.BooleanField()
-    rating = models.IntegerField(default = 0,
-        validators=[MaxValueValidator(5), MinValueValidator(0)]
-        )
+    # rating = models.IntegerField(default = 0,
+    #     validators=[MaxValueValidator(5), MinValueValidator(0)]
+    #     )
 
     def __str__(self): #this will display the items in the database by the name instead of just the furniture 1, furniture 2, etc...
         return self.name
