@@ -14,6 +14,10 @@ from pathlib import Path
 import dj_database_url
 import os
 
+# Initialise environment variables
+env = environ.Env()
+environ.Env.read_env()
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -22,12 +26,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-h9(24!*f+*0c=f_m%66!a+*6d9lw62%l&qe*18xpe)4bj!j*un'
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost','cozy-django.herokuapp.com','*']
+ALLOWED_HOSTS = ['localhost','cozy-django.herokuapp.com','*', 'web-production-faa8.up.railway.app']
 
 
 # Application definition
