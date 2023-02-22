@@ -1,41 +1,17 @@
-# The serializer will the take the data in database and convert it into JSON
 from rest_framework import serializers
-from django.contrib.auth.models import User
-from .models import Furniture, Cart
-# , Review
-from rest_framework_simplejwt.tokens import RefreshToken
+from .models import Furniture, Cart, Review
 
-
-class FurnitureSerializer(serializers.ModelSerializer): #tells django to convert sql to JSON
+class FurnitureSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Furniture #tells django which model to use
-        fields = ('id','name','img','imgURL','color','category','price','quantity','availability',) #tells django which fields to include
+        model = Furniture
+        fields = '__all__'
 
-
-class CartSerializer(serializers.ModelSerializer): #tells django to convert sql to JSON
+class CartSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Cart #tells django which model to use
-        fields = ('id','user','product','qty','price','img',)
+        model = Cart
+        fields = '__all__'
 
-
-
-class UserSerializer(serializers.ModelSerializer): #tells django to convert sql to JSON
+class ReviewSerializer(serializers.ModelSerializer):
     class Meta:
-        model = User #tells django which model to use
-        fields = ('id','username','email','first_name','is_staff',) #tells django to include all fields
-
-class UserSerializerWithToken(UserSerializer):
-    token  = serializers.SerializerMethodField(read_only = True)
-    class Meta:
-        model = User
-        fields = ('id','username','email','first_name','is_staff','token',)
-
-    def get_token(self, obj):
-        token = RefreshToken.for_user(obj)
-        return str(token)
-
-
-# class ReviewSerializer(serializers.ModelSerializer): #tells django to convert sql to JSON
-#     class Meta:
-#         model = Review #tells django which model to use
-#         fields = ('id', 'product', 'user', 'rating',) #tells django to include all fields
+        model = Review
+        fields = '__all__'

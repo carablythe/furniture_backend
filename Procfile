@@ -1,1 +1,1 @@
-web: gunicorn django_rest_furniture_api.wsgi
+web: gunicorn cozy_rest_api.wsgi
